@@ -15,3 +15,25 @@ export const generateToken = (user) => {
     }
   );
 };
+
+export const isAuth = (req, res, next) => {
+  const authorization = req.headers.authorization;
+  if (authorization) {
+    const token = authorization.slice(7, authorization.length);
+    jwt.verify(
+      token,
+      // eslint-disable-next-line no-undef
+      process.env.JWT_SECRET || 'hfasbdhbfasjdna',
+      (err, decode) => {
+        if (err) {
+          res.status(401).send({ message: 'Token inválido' });
+        } else {
+          req.user = decode;
+          next();
+        }
+      }
+    );
+  } else {
+    res.status(401).send({ message: 'Token não encontrado' });
+  }
+};
