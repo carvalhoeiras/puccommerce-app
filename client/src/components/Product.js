@@ -13,7 +13,7 @@ export default function Product(props) {
                                 <h2>{product.name}</h2>
                             </Link>
                             <Rating rating={product.rating} numReviews={product.numReviews}></Rating>
-                    <       div className="price">R${product.price}</div>
+                    <       div className="price">R${product.price.toLocaleString('pt-br', {minimumFractionDigits: 2})}</div>
                         </div>
                     </div>
     )

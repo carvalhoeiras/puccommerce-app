@@ -12,7 +12,11 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import ProfileScreen from './screens/ProfileScreen';
+import ProductListScreen from './screens/ProductListScreen';
+import ProductEditScreen from './screens/ProductEditScreen';
 import PrivateRoute from './components/PrivateRoute';
+import AdminRoute from './components/AdminRoute';
+
 
 
 
@@ -31,41 +35,34 @@ function App() {
     <BrowserRouter>
       <div className="grid-container">
               <header className="row">
-                  <div>
-                    <Link className="brand" to="/">Puc-Commerce</Link>
-                  </div>
-                  <div>
-                    <Link to="/cart">
-                      Cesta
-                      {cartItems.length > 0 && (<span className="badge">{cartItems.length}</span>)}
-                    </Link>
-                    {userInfo ? (
-                      <div className="dropdown">
-                        <Link to="#">
-                          {userInfo.name} <i className="fa fa-caret-down"></i>{' '}
-                        </Link>
-                        <ul className="dropdown-content">
-                          <li>
-                            <Link to="/profile">Perfil</Link>
-                          </li>
-                          <li>
-                            <Link to="/orderhistory">Histórico</Link>
-                          </li>
-                          <li>
-                            <Link to="#signout" onClick={signoutHandler}>
-                              Sair
-                            </Link>
-                          </li>
-                        </ul>
-                      </div>
-                    ) : (
-                      <Link to="/signin">Login</Link>
-                    )}
-                  </div>
+                  <div><Link className="brand" to="/">Puc-Commerce</Link></div>
+                  <div><Link to="/cart">Cesta{cartItems.length > 0 && (<span className="badge">{cartItems.length}</span>)}</Link>
+                  {userInfo ? (
+                    <div className="dropdown">
+                      <Link to="#">{userInfo.name} <i className="fa fa-caret-down"></i>{' '}</Link>
+                      <ul className="dropdown-content">
+                        <li><Link to="/profile">Perfil</Link></li>
+                        <li><Link to="/orderhistory">Histórico</Link></li>
+                        <li><Link to="#signout" onClick={signoutHandler}>Sair</Link></li>
+                      </ul>
+                    </div>
+                    ) : (<Link to="/signin">Login</Link>)}
+                  {userInfo && userInfo.isAdmin && (
+                    <div className="dropdown">
+                      <Link to="#admin">Admin <i className="fa fa-caret-down"></i></Link>
+                      <ul className="dropdown-content">
+                        <li><Link to="/dashboard">Dashboard</Link></li>
+                        <li><Link to="/productlist">Produtos</Link></li>
+                        <li><Link to="/orderlist">Pedidos</Link></li>
+                        <li><Link to="/userlist">Usuários</Link></li>
+                      </ul>
+                    </div>
+                  )}
+                </div>
               </header>
               <main>
                 <Route path="/cart/:id?" component={CartScreen}></Route>
-                <Route path="/product/:id" component={ProductScreen}></Route>    
+                <Route path="/product/:id" component={ProductScreen} exact></Route>    
                 <Route path="/signin" component={SigninScreen}></Route>
                 <Route path="/register" component={RegisterScreen}></Route>
                 <Route path="/shipping" component={ShippingAddressScreen}></Route>
@@ -73,10 +70,9 @@ function App() {
                 <Route path="/placeorder" component={PlaceOrderScreen}></Route>
                 <Route path="/order/:id" component={OrderScreen}></Route>
                 <Route path="/orderhistory" component={OrderHistoryScreen}></Route>
-                <PrivateRoute
-                  path="/profile"
-                  component={ProfileScreen}
-                ></PrivateRoute>
+                <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
+                <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
+                <AdminRoute path="/productlist" component={ProductListScreen} ></AdminRoute>
                 <Route path="/" component={HomeScreen} exact></Route>
               </main>
               <footer className="row center"> Todos os direitos reservados</footer>
