@@ -14,6 +14,9 @@ import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
+import OrderListScreen from './screens/OrderListScreen';
+import UserListScreen from './screens/UserListScreen';
+import UserEditScreen from './screens/UserEditScreen';
 import PrivateRoute from './components/PrivateRoute';
 import AdminRoute from './components/AdminRoute';
 
@@ -73,6 +76,9 @@ function App() {
                 <Route path="/product/:id/edit" component={ProductEditScreen} exact></Route>
                 <PrivateRoute path="/profile" component={ProfileScreen}></PrivateRoute>
                 <AdminRoute path="/productlist" component={ProductListScreen} ></AdminRoute>
+                <AdminRoute path="/orderlist" component={OrderListScreen}></AdminRoute>
+                <AdminRoute path="/userlist" component={UserListScreen}></AdminRoute>
+                <AdminRoute path="/user/:id/edit" component={UserEditScreen}></AdminRoute>
                 <Route path="/" component={HomeScreen} exact></Route>
               </main>
               <footer className="row center"> Todos os direitos reservados</footer>

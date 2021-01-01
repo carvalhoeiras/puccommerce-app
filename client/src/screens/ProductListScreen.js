@@ -97,7 +97,7 @@ export default function ProductListScreen(props) {
                             className="small"
                             onClick={() => deleteHandler(product)}
                         >
-                            Deletar
+                            Excluir
                         </button>
                         </td>
                     </tr>
