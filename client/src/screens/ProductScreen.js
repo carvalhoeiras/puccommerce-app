@@ -44,10 +44,10 @@ export default function ProductScreen(props) {
                   <h1>{product.name}</h1>
                 </li>
                 <li>
-                  <Rating
+                  {/* <Rating
                     rating={product.rating}
                     numReviews={product.numReviews}
-                  ></Rating>
+                  ></Rating> */}
                 </li>
                 <li>Preço : R${product.price.toLocaleString('pt-br', {minimumFractionDigits: 2})}</li>
                 <li>

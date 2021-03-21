@@ -38,10 +38,10 @@ export default function OrderListScreen(props) {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Usuário</th>
+              {/*<th>Usuário</th>*/}
               <th>Data</th>
               <th>Total</th>
-              <th>Pago</th>
+              {/*<th>Pago</th>*/}
               <th>Entregue</th>
               <th>Ações</th>
             </tr>
@@ -50,10 +50,11 @@ export default function OrderListScreen(props) {
             {orders.map((order) => (
               <tr key={order._id}>
                 <td>{order._id}</td>
-                <td>{order.user.name}</td>
+               {/*} <td>{order.user.name}</td>*/}
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>R$ {order.totalPrice.toLocaleString('pt-br', {minimumFractionDigits: 2})}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'Não'}</td>
+                {/*<td>{order.isPaid ? order.paidAt.substring(0, 10) : 'Não'}</td>*/}
+                
                 <td>
                   {order.isDelivered
                     ? order.deliveredAt.substring(0, 10)

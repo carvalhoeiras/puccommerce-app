@@ -72,7 +72,7 @@ export default function OrderScreen(props) {
         <MessageBox variant="danger">{error}</MessageBox>
       ) : (
         <div>
-          <h1>Order {order._id}</h1>
+          <h1>Pedido {order._id}</h1>
           <div className="row top">
             <div className="col-2">
               <ul>
@@ -103,7 +103,7 @@ export default function OrderScreen(props) {
                     </p>
                     {order.isPaid ? (
                       <MessageBox variant="success">
-                        Pago em {order.paidAt}
+                        Pagamento efetuado{/* Pago em {order.paidAt} */}
                       </MessageBox>
                     ) : (
                       <MessageBox variant="danger">Não foi pago</MessageBox>

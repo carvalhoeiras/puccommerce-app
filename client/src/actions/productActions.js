@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Axios from 'axios';
 import {
   PRODUCT_DETAILS_FAIL,

@@ -36,7 +36,7 @@ export default function OrderHistoryScreen(props) {
                 <td>{order._id}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
                 <td>R${order.totalPrice.toLocaleString('pt-br', {minimumFractionDigits: 2})}</td>
-                <td>{order.isPaid ? order.paidAt.substring(0, 10) : 'Não'}</td>
+                <td>{order.isPaid ? 'Sim' : 'Não'}</td>
                 <td>
                   {order.isDelivered
                     ? order.deliveredAt.substring(0, 10)

@@ -45,7 +45,7 @@ const deleteHandler = (user) => {
               <th>Id</th>
               <th>Nome</th>
               <th>Email</th>
-              <th>Vendedor?</th>
+              {/* <th>Vendedor?</th> */}
               <th>Administrador?</th>
               <th>Ações</th>
             </tr>
@@ -56,7 +56,7 @@ const deleteHandler = (user) => {
                 <td>{user._id}</td>
                 <td>{user.name}</td>
                 <td>{user.email}</td>
-                <td>{user.isSeller ? 'Sim' : 'Não'}</td>
+                {/* <td>{user.isSeller ? 'Sim' : 'Não'}</td> */}
                 <td>{user.isAdmin ? 'Sim' : 'Não'}</td>
                 <td>
                 <button
